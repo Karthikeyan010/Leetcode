@@ -1,7 +1,6 @@
 package src.slidingwindow;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Solution {
 
@@ -60,5 +59,22 @@ public class Solution {
 
         return s.substring(minStart,minStart + minLength);
 
+    }
+
+    public List<String> findRepeatedDnaSequences(String s) {
+        Set<String> seen = new HashSet<String>();
+        Set<String> reapeated = new HashSet<String>();
+
+        for(int i =0;i<=(s.length()-10);i++){
+            String subsequence = s.substring(i,i+10);
+            if(seen.contains(subsequence)){
+                reapeated.add(subsequence);
+            }else{
+                seen.add(subsequence);
+            }
+
+
+        }
+        return new ArrayList<String>(reapeated);
     }
 }
