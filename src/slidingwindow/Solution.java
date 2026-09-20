@@ -77,4 +77,27 @@ public class Solution {
         }
         return new ArrayList<String>(reapeated);
     }
-}
+
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
+
+        TreeSet<Long> window = new TreeSet<Long>();
+
+        for(int i =0 ;i< nums.length;i++){
+            long current = nums[i];
+
+            Long candidate= window.ceiling(current - valueDiff);
+
+            if(candidate != null && candidate <= current + valueDiff){
+                return true;
+            }
+
+            window.add(current);
+
+            if(i>=indexDiff){
+                window.remove((long)(nums[i-indexDiff]));
+            }
+        }
+        return false;
+
+
+    }}
