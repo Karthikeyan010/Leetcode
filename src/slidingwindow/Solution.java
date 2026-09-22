@@ -195,4 +195,33 @@ public class Solution {
         return total;
 
     }
+
+
+    public int characterReplacement(String s, int k) {
+        int left =0;
+        int maxLength=0;
+        int n=s.length();
+        int[] maxFreq = new int[26];
+        int maxFrequency=0;
+        for(int right =0;right<n;right++){
+
+            char c= s.charAt(right);
+
+            maxFreq[c-'A']++;
+
+            maxFrequency = Math.max(maxFrequency,maxFreq[c-'A']);
+
+            while((right - left +1)- maxFrequency >k){
+                maxFreq[s.charAt(left)-'A']--;
+                left++;
+            }
+
+            maxLength=Math.max(maxLength,right - left +1);
+
+
+
+        }
+
+        return maxLength;
+    }
 }
