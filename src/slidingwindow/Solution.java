@@ -287,4 +287,33 @@ public class Solution {
         return false;
 
     }
+
+
+    public double findMaxAverage(int[] nums, int k) {
+        if(k> nums.length){
+            return 0.00000;
+        }
+        int max=Integer.MIN_VALUE;
+        int left =0;
+        int total=0;
+
+
+        for(int right =0;right<nums.length;right++){
+
+
+            total+=nums[right];
+
+
+
+            if((right-left+1)==k){
+                max=Math.max(max,total);
+                total-=nums[left];
+                left++;
+
+            }
+
+        }
+        return (double) max/k;
+
+    }
 }
