@@ -316,4 +316,28 @@ public class Solution {
         return (double) max/k;
 
     }
+
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length-1;
+        while((right - left +1)>k){
+
+            int leftabs = Math.abs(arr[left] - x);
+            int rightabs = Math.abs(arr[right] -x);
+            if (leftabs > rightabs){
+                left++;
+            }else{right--;}
+
+
+
+
+        }
+        ArrayList<Integer> ar = new ArrayList<>();
+        for(int start=left;start<=right;start++){
+            ar.add(arr[start]);
+        }
+
+        return ar;
+
+    }
 }
